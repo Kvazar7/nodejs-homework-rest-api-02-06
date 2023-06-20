@@ -3,5 +3,3 @@ export const HttpError = (status, message) => {
     error.status = status;
     throw error;
 };
-
-// module.exports = HttpError;
