@@ -1,8 +1,8 @@
 import { Contact } from '../schemas/contacts.js';
 import { HttpError } from "../helpers/HttpErrors.js";
-// import { ctrlWrapper } from "../helpers/ctrlWraper.js";
+import { ctrlWrapper } from "../helpers/ctrlWraper.js";
 
-export const delContact = async (req, res, next) => {
+export const del = async (req, res, next) => {
   const { id } = req.params
     const result = await Contact.findByIdAndRemove({ _id: id })
     if (result) {
@@ -16,6 +16,4 @@ export const delContact = async (req, res, next) => {
     }
 }
 
-// export default {
-//   addContact: ctrlWrapper(createContact)
-// };
+export const delContact = ctrlWrapper(del)

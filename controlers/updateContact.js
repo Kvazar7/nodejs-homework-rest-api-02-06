@@ -1,8 +1,8 @@
 import { Contact } from '../schemas/contacts.js';
 import { HttpError } from "../helpers/HttpErrors.js";
-// import { ctrlWrapper } from "../helpers/ctrlWraper.js";
+import { ctrlWrapper } from "../helpers/ctrlWraper.js";
 
-export const updateContact = async (req, res, next) => {
+export const update = async (req, res, next) => {
   const { id } = req.params
   const { name, email, phone } = req.body
     const { error } = req.body;
@@ -20,3 +20,5 @@ export const updateContact = async (req, res, next) => {
       throw HttpError(404, `Not found contact id: ${id}`)
     }
 }
+
+export const updateContact = ctrlWrapper(update)

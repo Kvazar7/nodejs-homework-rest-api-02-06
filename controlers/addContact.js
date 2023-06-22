@@ -1,8 +1,8 @@
 import { Contact } from '../schemas/contacts.js';
 import { HttpError } from "../helpers/HttpErrors.js";
-// import { ctrlWrapper } from "../helpers/ctrlWraper.js";
+import { ctrlWrapper } from "../helpers/ctrlWraper.js";
 
-export const addContact = async (req, res) => {
+const add = async (req, res) => {
   const { name, email, phone } = req.body;
     const { error } = req.body;
     if (error) {
@@ -16,6 +16,4 @@ export const addContact = async (req, res) => {
     })
 }
 
-// export default {
-//   addContact: ctrlWrapper(addContact)
-// };
+export const addContact = ctrlWrapper(add)
